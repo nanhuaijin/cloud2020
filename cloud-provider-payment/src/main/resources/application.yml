@@ -17,6 +17,9 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:7001/eureka/
+  instance:
+    instance-id: payment8001 # 在EurekaServer中隐藏主机名字
+    prefer-ip-address: true  # 访问路径可以显示ip地址
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
