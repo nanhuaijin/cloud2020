@@ -1,17 +1,15 @@
-package com.breeze.springcloud.payment;
+package com.breeze.springcloud.order;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
-/**
- * @author breeze
- * @date 2020/3/15
- */
 @SpringBootApplication
 @EnableEurekaClient
-public class PaymentApplication {
+public class OrderApplication {
+
     public static void main(String[] args) {
-        SpringApplication.run(PaymentApplication.class, args);
+        SpringApplication.run(OrderApplication.class, args);
     }
+
 }
