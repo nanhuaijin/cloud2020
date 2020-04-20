@@ -9,12 +9,12 @@
         <result property="serial" column="serial" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <select id="getPaymentById" resultMap="BaseResult" parameterType="Long">
+    <select id="getPaymentById" resultMap="BaseResult">
         select * from payment
         where id = #{id, jdbcType=BIGINT}
     </select>
 
-    <insert id="savePayment" parameterType="Payment" useGeneratedKeys="true" keyProperty="id">
+    <insert id="savePayment" useGeneratedKeys="true" keyProperty="id">
         insert into payment(serial) values (#{serial});
     </insert>
 </mapper>

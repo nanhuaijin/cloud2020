@@ -6,6 +6,8 @@ import com.breeze.springcloud.payment.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author breeze
  * @date 2020/3/15
@@ -23,6 +25,9 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public Payment getPaymentById(Long id) {
+        //暂停一会儿(秒)
+        try {
+            TimeUnit.SECONDS.sleep(20); } catch (InterruptedException e) {e.printStackTrace(); }
         return this.paymentMapper.getPaymentById(id);
     }
 }

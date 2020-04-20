@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.concurrent.TimeoutException;
+
 /**
  * @author breeze
  * @date 2020/3/15
