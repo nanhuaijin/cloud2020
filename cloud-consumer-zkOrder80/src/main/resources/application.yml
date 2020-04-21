@@ -1,8 +1,8 @@
 server:
-  port: 8004
+  port: 80
 spring:
   application:
-    name: cloud-provider-payment
+    name: cloud-consumer-order
   cloud:
     zookeeper:
       connect-string: 192.168.233.128:2181
