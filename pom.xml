@@ -19,6 +19,7 @@
       <module>cloud-consul-provider</module>
       <module>cloud-consul-consumer</module>
       <module>cloud-hystrix-provide</module>
+      <module>cloud-hystrix-consumer</module>
   </modules>
 
   <!--  统一管理Jar包版本  -->
