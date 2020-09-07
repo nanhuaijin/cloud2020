@@ -30,6 +30,16 @@ import org.springframework.web.bind.annotation.RestController;
  *              和业务代码混淆在一起，比较混乱
  *      2.服务熔断：达到最大访问量后，直接拒绝访问，然后调用服务降级的方法并返回友好提示 - 保险丝
  *          1）：服务降级 -->  进而熔断 -->  恢复调用链路
+ *          2）：熔断：是应对雪崩效应的一种微服务链路保护机制。当扇出链路的某个微服务出错不可用
+ *                  或者响应时间太长时，会进行服务的降级，进而熔断该节点微服务的调用，快速返回
+ *                  错误响应信息。当检测到该节点微服务调用的响应正常后，恢复调用链路
+ *          3）：spring cloud框架中，熔断机制通过Hystrix实现。Hystrix会监控微服务间调用的
+ *              状况，当失败的调用到一定的阈值，缺省是5秒内20次调用失败，就会启动熔断机制，熔断
+ *              机制的注解是@HystrixCommand
+ *          4）：熔断类型
+ *              熔断打开：请求不再进行调用当前服务，内部设置时钟一般为MTTR(平均故障处理时间)，当打开市场达到所设时钟则进入半熔断状态
+ *              熔断关闭：熔断关闭不会对服务进行熔断
+ *              熔断半开：部分请求根据规则调用当前服务，如果请求成功且符合规则则任务昂前服务恢复正常，关闭熔断
  *      3.服务限流：秒杀高并发等操作，严禁一窝蜂的过来拥挤，大家排队，一秒n个，排队进行
  */
 @RestController
@@ -54,5 +64,14 @@ public class HystrixProvideController {
     @GetMapping("hystrix/global")
     public String paymentInfoTimeOut() {
         return this.hystrixProService.paymentInfoTimeOut();
+    }
+
+
+    //============服务熔断===================================
+    @GetMapping("/hystrix/circuit/{id}")
+    public String paymentCircuitBreaker(@PathVariable("id") Integer id) {
+        String result = this.hystrixProService.paymentCircuitBreaker(id);
+        log.info("result + {}", result);
+        return result;
     }
 }
