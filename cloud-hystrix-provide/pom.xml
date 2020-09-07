@@ -12,7 +12,7 @@
     <artifactId>cloud-hystrix-provide</artifactId>
 
     <dependencies>
-        <!--     Hystrix       -->
+        <!-- Hystrix -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>

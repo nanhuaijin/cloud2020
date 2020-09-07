@@ -25,6 +25,9 @@ import org.springframework.web.bind.annotation.RestController;
  *          2）：超时
  *          3）：服务熔断触发服务降级
  *          4）：线程池/信号量打满也会导致服务降级
+ *          5）：存在的问题：
+ *              每个业务方法对应一个兜底的方法，代码膨胀
+ *              和业务代码混淆在一起，比较混乱
  *      2.服务熔断：达到最大访问量后，直接拒绝访问，然后调用服务降级的方法并返回友好提示 - 保险丝
  *          1）：服务降级 -->  进而熔断 -->  恢复调用链路
  *      3.服务限流：秒杀高并发等操作，严禁一窝蜂的过来拥挤，大家排队，一秒n个，排队进行
@@ -46,5 +49,10 @@ public class HystrixProvideController {
     @GetMapping("/hystrix/time/out/{id}")
     public String paymentInfoTimeOut(@PathVariable("id") Integer id) {
         return this.hystrixProService.paymentInfoTimeOut(id);
+    }
+
+    @GetMapping("hystrix/global")
+    public String paymentInfoTimeOut() {
+        return this.hystrixProService.paymentInfoTimeOut();
     }
 }
