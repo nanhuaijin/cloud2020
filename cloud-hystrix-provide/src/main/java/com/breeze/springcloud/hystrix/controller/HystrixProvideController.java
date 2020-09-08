@@ -47,6 +47,7 @@ import org.springframework.web.bind.annotation.RestController;
  *              错误百分比阈值：当请求总数在快照时间窗口内超过了阈值，比如发生了30次调用，如果在30次调动中，有15次
  *                          发生了超时异常，也就是超过50%的错误百分比，在默认设定50%阈值情况下，这时候会将断路器打开
  *      3.服务限流：秒杀高并发等操作，严禁一窝蜂的过来拥挤，大家排队，一秒n个，排队进行
+ *              后面高级篇讲解Alibaba的Sentinel再详细说明
  */
 @RestController
 @Slf4j
